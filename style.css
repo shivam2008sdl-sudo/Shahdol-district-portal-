@@ -1,5 +1,9 @@
 
-/* ===== सामान्य सेटिंग ===== */
+/* =================================
+   SHAHdol DISTRICT PORTAL
+   COMPLETE WEBSITE DESIGN
+================================= */
+
 * {
   margin: 0;
   padding: 0;
@@ -11,88 +15,99 @@ html {
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background: #f5f7fa;
-  color: #222;
-  line-height: 1.6;
+  font-family: Arial, "Noto Sans Devanagari", sans-serif;
+  background: #f5f7f9;
+  color: #252525;
+  line-height: 1.7;
 }
 
-/* ===== हेडर ===== */
+/* HEADER */
+
 header {
   background: #075b36;
   color: white;
   padding: 15px 5%;
+}
+
+.header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  gap: 15px;
 }
 
 header h1 {
-  font-size: 23px;
+  font-size: 25px;
 }
 
 header p {
-  font-size: 13px;
+  font-size: 14px;
+  color: #e4f5e9;
 }
 
 #menuBtn {
   display: none;
-  background: white;
-  color: #075b36;
   border: none;
-  padding: 8px 13px;
+  background: #ffffff;
+  color: #075b36;
+  padding: 8px 14px;
   border-radius: 5px;
-  font-size: 20px;
+  font-size: 23px;
+  cursor: pointer;
 }
 
-/* ===== नेविगेशन मेन्यू ===== */
+/* NAVIGATION */
+
 nav {
   background: #064629;
-  padding: 12px 5%;
+  padding: 12px 4%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
 nav a {
   color: white;
   text-decoration: none;
-  margin: 0 10px;
-  font-size: 15px;
+  padding: 8px 11px;
+  font-size: 14px;
+  border-radius: 4px;
 }
 
 nav a:hover {
-  color: #ffd700;
+  background: #168653;
+  color: white;
 }
 
-/* ===== मुख्य बैनर ===== */
+/* HERO SECTION */
+
 .hero {
-  min-height: 330px;
-  background: linear-gradient(
-    120deg,
-    #075b36,
-    #168653
-  );
+  min-height: 350px;
+  background: linear-gradient(120deg, #075b36, #168653);
   color: white;
   text-align: center;
-  padding: 80px 20px;
+  padding: 90px 20px;
 }
 
 .hero h2 {
-  font-size: 32px;
+  font-size: 34px;
   margin-bottom: 15px;
 }
 
 .hero p {
-  font-size: 17px;
-  margin-bottom: 22px;
+  font-size: 18px;
+  margin-bottom: 25px;
 }
 
-/* ===== बटन ===== */
+/* BUTTON */
+
 .btn {
   display: inline-block;
   background: #ffcc00;
   color: #222;
   text-decoration: none;
-  padding: 11px 22px;
+  padding: 12px 24px;
   border-radius: 5px;
   font-weight: bold;
 }
@@ -101,23 +116,22 @@ nav a:hover {
   background: #f0b900;
 }
 
-/* ===== सभी सेक्शन ===== */
+/* SECTIONS */
+
 section {
   padding: 45px 6%;
+  scroll-margin-top: 20px;
 }
 
 section h2 {
   color: #075b36;
   text-align: center;
-  margin-bottom: 25px;
   font-size: 27px;
+  margin-bottom: 28px;
 }
 
-section p {
-  margin-bottom: 12px;
-}
+/* CARDS */
 
-/* ===== कार्ड ===== */
 .cards {
   display: grid;
   grid-template-columns: repeat(
@@ -131,40 +145,64 @@ section p {
   background: white;
   padding: 22px;
   border-radius: 9px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
   border-top: 4px solid #168653;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
 }
 
 .card h3 {
   color: #075b36;
   margin-bottom: 10px;
+  font-size: 19px;
 }
 
 .card p {
-  font-size: 14px;
+  color: #555;
+  font-size: 15px;
 }
 
-/* ===== फुटर ===== */
+/* DISTRICT INFORMATION */
+
+#district-info .card {
+  text-align: center;
+  border-top-color: #d39b16;
+}
+
+#district-info .card h3 {
+  color: #805500;
+}
+
+/* CONTACT */
+
+#contact .card {
+  max-width: 700px;
+  margin: auto;
+}
+
+/* FOOTER */
+
 footer {
   background: #063d29;
   color: white;
   text-align: center;
-  padding: 25px 15px;
+  padding: 28px 15px;
 }
 
 footer p {
   margin: 5px 0;
+  font-size: 14px;
 }
 
-/* ===== मोबाइल स्क्रीन ===== */
+/* MOBILE DESIGN */
+
 @media (max-width: 768px) {
 
-  header {
-    gap: 10px;
-  }
-
   header h1 {
-    font-size: 19px;
+    font-size: 20px;
   }
 
   #menuBtn {
@@ -173,33 +211,43 @@ footer p {
 
   nav {
     display: none;
-    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 8px 5%;
   }
 
   nav.active {
-    display: block;
+    display: flex;
   }
 
   nav a {
     display: block;
-    padding: 10px 0;
-    border-bottom: 1px solid #ffffff33;
+    border-bottom: 1px solid #ffffff30;
+    padding: 10px;
   }
 
   .hero {
-    padding: 60px 15px;
+    min-height: 280px;
+    padding: 65px 15px;
   }
 
   .hero h2 {
     font-size: 25px;
   }
 
+  .hero p {
+    font-size: 15px;
+  }
+
   section {
-    padding: 35px 5%;
+    padding: 32px 5%;
   }
 
   section h2 {
     font-size: 23px;
   }
+
+  .cards {
+    grid-template-columns: 1fr;
   }
-  
+}
