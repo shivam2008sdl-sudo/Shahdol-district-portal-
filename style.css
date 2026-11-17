@@ -1,0 +1,205 @@
+
+/* ===== सामान्य सेटिंग ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f7fa;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* ===== हेडर ===== */
+header {
+  background: #075b36;
+  color: white;
+  padding: 15px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header h1 {
+  font-size: 23px;
+}
+
+header p {
+  font-size: 13px;
+}
+
+#menuBtn {
+  display: none;
+  background: white;
+  color: #075b36;
+  border: none;
+  padding: 8px 13px;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+/* ===== नेविगेशन मेन्यू ===== */
+nav {
+  background: #064629;
+  padding: 12px 5%;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 15px;
+}
+
+nav a:hover {
+  color: #ffd700;
+}
+
+/* ===== मुख्य बैनर ===== */
+.hero {
+  min-height: 330px;
+  background: linear-gradient(
+    120deg,
+    #075b36,
+    #168653
+  );
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 17px;
+  margin-bottom: 22px;
+}
+
+/* ===== बटन ===== */
+.btn {
+  display: inline-block;
+  background: #ffcc00;
+  color: #222;
+  text-decoration: none;
+  padding: 11px 22px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: #f0b900;
+}
+
+/* ===== सभी सेक्शन ===== */
+section {
+  padding: 45px 6%;
+}
+
+section h2 {
+  color: #075b36;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 27px;
+}
+
+section p {
+  margin-bottom: 12px;
+}
+
+/* ===== कार्ड ===== */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(220px, 1fr)
+  );
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 22px;
+  border-radius: 9px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  border-top: 4px solid #168653;
+}
+
+.card h3 {
+  color: #075b36;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 14px;
+}
+
+/* ===== फुटर ===== */
+footer {
+  background: #063d29;
+  color: white;
+  text-align: center;
+  padding: 25px 15px;
+}
+
+footer p {
+  margin: 5px 0;
+}
+
+/* ===== मोबाइल स्क्रीन ===== */
+@media (max-width: 768px) {
+
+  header {
+    gap: 10px;
+  }
+
+  header h1 {
+    font-size: 19px;
+  }
+
+  #menuBtn {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    width: 100%;
+  }
+
+  nav.active {
+    display: block;
+  }
+
+  nav a {
+    display: block;
+    padding: 10px 0;
+    border-bottom: 1px solid #ffffff33;
+  }
+
+  .hero {
+    padding: 60px 15px;
+  }
+
+  .hero h2 {
+    font-size: 25px;
+  }
+
+  section {
+    padding: 35px 5%;
+  }
+
+  section h2 {
+    font-size: 23px;
+  }
+  }
+  
