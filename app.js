@@ -1,253 +1,324 @@
 
-/* SHAHDOL PORTAL - CLICKABLE DETAILS */
+/* =========================================
+   SHAHDOL DISTRICT PORTAL - COMPLETE APP.JS
+   ========================================= */
 
-const details = {
-  "सरकारी अस्पताल": {
-    name: "कुशाभाऊ ठाकरे जिला अस्पताल",
-    address: "पांडव नगर, शहडोल, मध्य प्रदेश - 484001",
-    phone: "07652245256",
-    time: "अस्पताल की OPD समय-सारणी की पुष्टि आवश्यक है। आपातकालीन सेवा के लिए अस्पताल से संपर्क करें।",
-    extra: "ईमेल: csurgeonshdmp@mp.nic.in"
-  },
+document.addEventListener("DOMContentLoaded", function () {
 
-  "कलेक्टर कार्यालय": {
-    name: "कलेक्ट्रेट कार्यालय, शहडोल",
-    address: "शहडोल, मध्य प्रदेश",
-    time: "कार्यालय का वर्तमान समय सत्यापित करना बाकी है।"
-  },
+  // ---------- DATA ----------
+  const sections = [
+    {
+      id: "administration",
+      title: "प्रशासन",
+      data: getData("administrationData", "administration")
+    },
+    {
+      id: "education",
+      title: "शिक्षा",
+      data: getData("educationData", "education")
+    },
+    {
+      id: "health",
+      title: "स्वास्थ्य",
+      data: getData("healthData", "health")
+    },
+    {
+      id: "services",
+      title: "जन सेवाएँ",
+      data: getData("servicesData", "services")
+    },
+    {
+      id: "tourism",
+      title: "पर्यटन",
+      data: getData("tourismData", "tourism")
+    }
+  ];
 
-  "शिक्षा विभाग": {
-    name: "जिला शिक्षा अधिकारी कार्यालय",
-    address: "शहडोल, मध्य प्रदेश",
-    phone: "07652-245032",
-    time: "कार्यालय का समय सत्यापित करना बाकी है।"
-  },
+  function getData(primary, secondary) {
+    try {
+      if (typeof administrationData !== "undefined" && primary === "administrationData") return administrationData;
+    } catch (e) {}
 
-  "कॉलेज": {
-    name: "शहडोल के कॉलेज एवं महाविद्यालय",
-    address: "शहडोल जिला, मध्य प्रदेश",
-    extra: "सरकारी मेडिकल कॉलेज की वेबसाइट: https://gmcshahdol.org"
-  },
+    try {
+      if (typeof educationData !== "undefined" && primary === "educationData") return educationData;
+    } catch (e) {}
 
-  "मेडिकल कॉलेज": {
-    name: "बिरसा मुंडा शासकीय मेडिकल कॉलेज",
-    address: "शहडोल, मध्य प्रदेश",
-    phone: "8319980380",
-    time: "आपातकालीन सेवा 24 घंटे उपलब्ध बताई गई है।",
-    extra: "वेबसाइट: https://gmcshahdol.org"
-  },
+    try {
+      if (typeof healthData !== "undefined" && primary === "healthData") return healthData;
+    } catch (e) {}
 
-  "सारसी आइलैंड रिसॉर्ट": {
-    name: "The Sarsi Island Resort",
-    address: "सारसी, शहडोल जिला, मध्य प्रदेश",
-    time: "नाव सेवा का बताया गया समय शाम 5:30 बजे तक है। यात्रा से पहले पुष्टि करें।",
-    extra: "पहुँचने के लिए पहले मार्कंडेय घाट और फिर नाव से यात्रा करनी होती है।"
-  },
+    try {
+      if (typeof servicesData !== "undefined" && primary === "servicesData") return servicesData;
+    } catch (e) {}
 
-  "विराटेश्वर मंदिर": {
-    name: "विराटेश्वर मंदिर",
-    address: "सोहागपुर, शहडोल, मध्य प्रदेश",
-    time: "दर्शन का समय स्थानीय प्रबंधन से सत्यापित करें।"
-  },
+    try {
+      if (typeof tourismData !== "undefined" && primary === "tourismData") return tourismData;
+    } catch (e) {}
 
-  "हेल्पलाइन नंबर": {
-    name: "महत्वपूर्ण हेल्पलाइन",
-    phone: "पुलिस: 100 | एम्बुलेंस: 108 | महिला: 1091 | चाइल्ड: 1098 | CM हेल्पलाइन: 181",
-    time: "आपातकालीन सहायता के लिए संबंधित नंबर पर संपर्क करें।"
-  },
+    try {
+      if (typeof window[secondary] !== "undefined") return window[secondary];
+    } catch (e) {}
 
-  "सरकारी स्कूल": {
-    name: "शहडोल के सरकारी विद्यालय",
-    address: "शहडोल जिला, मध्य प्रदेश",
-    time: "हर विद्यालय की समय-सारणी अलग होती है। संबंधित विद्यालय से पुष्टि करें।"
-  },
-
-  "निजी स्कूल": {
-    name: "शहडोल के निजी विद्यालय",
-    address: "शहडोल जिला, मध्य प्रदेश",
-    time: "विद्यालयवार समय-सारणी की पुष्टि आवश्यक है।"
-  },
-
-  "हॉस्टल एवं छात्रावास": {
-    name: "शहडोल के छात्रावास",
-    address: "शहडोल जिला, मध्य प्रदेश",
-    time: "प्रवेश, उपलब्ध सीट और समय की जानकारी संबंधित छात्रावास से लें।"
+    return [];
   }
-};
 
-// Add popup styles automatically
-const style = document.createElement("style");
+  // ---------- CARD CONTAINER ----------
+  function getContainer(section) {
+    const area = document.getElementById(section.id);
+    if (!area) return null;
 
-style.textContent = `
-.detail-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.65);
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-}
+    let container =
+      area.querySelector(".card-container") ||
+      area.querySelector(".cards-container") ||
+      area.querySelector(".card-grid") ||
+      area.querySelector(".cards") ||
+      area.querySelector(".grid");
 
-.detail-box {
-  background: white;
-  width: 100%;
-  max-width: 520px;
-  max-height: 85vh;
-  overflow-y: auto;
-  border-radius: 12px;
-  padding: 24px;
-  position: relative;
-  color: #222;
-}
+    if (!container) {
+      container = document.createElement("div");
+      container.className = "card-container";
+      area.appendChild(container);
+    }
 
-.detail-box h2 {
-  color: #075b36;
-  margin-bottom: 15px;
-}
-
-.detail-box p {
-  margin: 12px 0;
-  overflow-wrap: anywhere;
-}
-
-.detail-close {
-  position: absolute;
-  right: 14px;
-  top: 10px;
-  border: 0;
-  background: #075b36;
-  color: white;
-  padding: 7px 12px;
-  border-radius: 5px;
-  font-size: 18px;
-}
-
-.detail-link {
-  display: inline-block;
-  background: #075b36;
-  color: white;
-  padding: 10px 14px;
-  margin: 7px 5px 0 0;
-  border-radius: 5px;
-  text-decoration: none;
-}
-
-.card {
-  cursor: pointer;
-}
-`;
-
-document.head.appendChild(style);
-
-// Create popup
-const overlay = document.createElement("div");
-overlay.className = "detail-overlay";
-overlay.style.display = "none";
-
-overlay.innerHTML = `
-  <div class="detail-box">
-    <button class="detail-close" aria-label="बंद करें">✕</button>
-    <div id="detailContent"></div>
-  </div>
-`;
-
-document.body.appendChild(overlay);
-
-const content = document.getElementById("detailContent");
-
-function openDetails(title, description) {
-
-  const info = details[title] || {};
-
-  const name = info.name || title;
-  const address = info.address || "सटीक पता अभी सत्यापित किया जाना बाकी है।";
-  const phone = info.phone || "संपर्क नंबर अभी उपलब्ध नहीं है।";
-  const time = info.time || "समय-सारणी की आधिकारिक पुष्टि अभी बाकी है।";
-  const extra = info.extra || description ||
-    "इस स्थान की विस्तृत जानकारी सत्यापित करके जोड़ी जाएगी।";
-
-  const mapQuery = encodeURIComponent(
-    name + " " + address
-  );
-
-  const phoneLink = info.phone &&
-    /^\d+$/.test(info.phone.replace(/\D/g, ""))
-    ? `<a class="detail-link" href="tel:${info.phone.replace(/\D/g, "")}">📞 कॉल करें</a>`
-    : "";
-
-  content.innerHTML = `
-    <h2>${name}</h2>
-    <p><strong>📍 पता:</strong> ${address}</p>
-    <p><strong>📞 संपर्क:</strong> ${phone}</p>
-    <p><strong>🕒 समय-सारणी:</strong> ${time}</p>
-    <p><strong>ℹ️ अन्य जानकारी:</strong> ${extra}</p>
-    ${phoneLink}
-    <a class="detail-link"
-       href="https://www.google.com/maps/search/?api=1&query=${mapQuery}"
-       target="_blank" rel="noopener">
-       🗺️ नक्शे में देखें
-    </a>
-  `;
-
-  overlay.style.display = "flex";
-}
-
-// Make every card clickable
-document.querySelectorAll(".card").forEach(function(card) {
-
-  card.addEventListener("click", function() {
-
-    const heading = card.querySelector("h3");
-    const paragraph = card.querySelector("p");
-
-    if (!heading) return;
-
-    openDetails(
-      heading.textContent.trim(),
-      paragraph ? paragraph.textContent.trim() : ""
-    );
-
-  });
-
-});
-
-// Close popup
-overlay.querySelector(".detail-close").addEventListener("click", function() {
-  overlay.style.display = "none";
-});
-
-overlay.addEventListener("click", function(event) {
-  if (event.target === overlay) {
-    overlay.style.display = "none";
+    return container;
   }
-});
 
-document.addEventListener("keydown", function(event) {
-  if (event.key === "Escape") {
-    overlay.style.display = "none";
-  }
-});
+  // ---------- CREATE CARDS ----------
+  function renderCards() {
+    sections.forEach(function (section) {
+      const container = getContainer(section);
+      if (!container || !Array.isArray(section.data)) return;
 
-// Mobile menu
-const menuBtn = document.getElementById("menuBtn");
-const navbar = document.getElementById("navbar");
+      if (container.dataset.portalRendered === "yes") return;
 
-if (menuBtn && navbar) {
+      section.data.forEach(function (item) {
+        if (!item || typeof item !== "object") return;
 
-  menuBtn.addEventListener("click", function() {
-    navbar.classList.toggle("active");
-    menuBtn.textContent =
-      navbar.classList.contains("active") ? "✕" : "☰";
-  });
+        const title =
+          item.title || item.name || item.heading || item.department || "जानकारी";
 
-  navbar.querySelectorAll("a").forEach(function(link) {
-    link.addEventListener("click", function() {
-      navbar.classList.remove("active");
-      menuBtn.textContent = "☰";
+        const description =
+          item.description || item.details || item.info || item.address || "अधिक जानकारी के लिए क्लिक करें।";
+
+        const card = document.createElement("div");
+        card.className = "card portal-data-card";
+        card.tabIndex = 0;
+        card.setAttribute("role", "button");
+
+        const heading = document.createElement("h3");
+        heading.textContent = title;
+
+        const para = document.createElement("p");
+        para.textContent = description;
+
+        const more = document.createElement("span");
+        more.className = "read-more";
+        more.textContent = "पूरी जानकारी देखें →";
+
+        card.appendChild(heading);
+        card.appendChild(para);
+        card.appendChild(more);
+
+        card.addEventListener("click", function () {
+          showDetails(item, title, description);
+        });
+
+        card.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            showDetails(item, title, description);
+          }
+        });
+
+        container.appendChild(card);
+      });
+
+      container.dataset.portalRendered = "yes";
     });
-  });
-}
+  }
 
-console.log("Shahdol Portal Ready");
+  // ---------- POPUP ----------
+  const popupStyle = document.createElement("style");
+  popupStyle.textContent = `
+    .portal-modal {
+      display:none;
+      position:fixed;
+      inset:0;
+      z-index:99999;
+      background:rgba(0,0,0,.7);
+      align-items:center;
+      justify-content:center;
+      padding:15px;
+    }
+    .portal-modal.show { display:flex; }
+    .portal-modal-box {
+      background:#fff;
+      color:#222;
+      width:100%;
+      max-width:520px;
+      max-height:85vh;
+      overflow-y:auto;
+      border-radius:12px;
+      padding:22px;
+      position:relative;
+    }
+    .portal-modal-box h2 {
+      color:#176b3a;
+      margin:0 35px 15px 0;
+    }
+    .portal-modal-box p {
+      line-height:1.7;
+      overflow-wrap:anywhere;
+    }
+    .portal-close {
+      position:absolute;
+      right:14px;
+      top:10px;
+      border:0;
+      background:#eee;
+      border-radius:50%;
+      width:34px;
+      height:34px;
+      font-size:22px;
+      cursor:pointer;
+    }
+    .portal-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+    }
+    .portal-actions a {
+      display:inline-block;
+      background:#176b3a;
+      color:white;
+      padding:10px 15px;
+      border-radius:7px;
+      text-decoration:none;
+    }
+    .portal-data-card { cursor:pointer; }
+    .portal-data-card:focus {
+      outline:3px solid #176b3a;
+    }
+    .read-more {
+      display:inline-block;
+      margin-top:10px;
+      color:#176b3a;
+      font-weight:bold;
+    }
+  `;
+  document.head.appendChild(popupStyle);
+
+  const modal = document.createElement("div");
+  modal.className = "portal-modal";
+  modal.innerHTML = `
+    <div class="portal-modal-box">
+      <button class="portal-close" aria-label="बंद करें">&times;</button>
+      <div class="portal-modal-content"></div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  const modalContent = modal.querySelector(".portal-modal-content");
+
+  function showDetails(item, title, description) {
+    modalContent.replaceChildren();
+
+    const heading = document.createElement("h2");
+    heading.textContent = title;
+    modalContent.appendChild(heading);
+
+    const fields = [
+      ["विवरण", description],
+      ["पता", item.address || item.location],
+      ["फोन", item.phone || item.mobile || item.contact],
+      ["ईमेल", item.email],
+      ["समय", item.time || item.timing || item.hours],
+      ["वेबसाइट", item.website || item.url]
+    ];
+
+    fields.forEach(function (field) {
+      if (!field[1]) return;
+
+      const p = document.createElement("p");
+      const strong = document.createElement("strong");
+      strong.textContent = field[0] + ": ";
+      p.appendChild(strong);
+      p.appendChild(document.createTextNode(String(field[1])));
+      modalContent.appendChild(p);
+    });
+
+    const actions = document.createElement("div");
+    actions.className = "portal-actions";
+
+    const phone = item.phone || item.mobile || item.contact;
+    if (phone) {
+      const phoneLink = document.createElement("a");
+      phoneLink.href = "tel:" + String(phone).replace(/[^\d+]/g, "");
+      phoneLink.textContent = "फोन करें";
+      actions.appendChild(phoneLink);
+    }
+
+    const address = item.address || item.location || title;
+    const mapLink = document.createElement("a");
+    mapLink.href = "https://www.google.com/maps/search/?api=1&query=" +
+      encodeURIComponent(String(address) + ", Shahdol, Madhya Pradesh");
+    mapLink.target = "_blank";
+    mapLink.rel = "noopener";
+    mapLink.textContent = "मैप देखें";
+    actions.appendChild(mapLink);
+
+    if (item.website || item.url) {
+      const webLink = document.createElement("a");
+      webLink.href = item.website || item.url;
+      webLink.target = "_blank";
+      webLink.rel = "noopener";
+      webLink.textContent = "वेबसाइट खोलें";
+      actions.appendChild(webLink);
+    }
+
+    modalContent.appendChild(actions);
+    modal.classList.add("show");
+  }
+
+  function closePopup() {
+    modal.classList.remove("show");
+  }
+
+  modal.querySelector(".portal-close").addEventListener("click", closePopup);
+
+  modal.addEventListener("click", function (event) {
+    if (event.target === modal) closePopup();
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") closePopup();
+  });
+
+  // ---------- MOBILE MENU ----------
+  const menuButton =
+    document.querySelector(".menu-toggle") ||
+    document.querySelector(".hamburger") ||
+    document.querySelector("#menu-toggle");
+
+  const navigation =
+    document.querySelector(".nav-links") ||
+    document.querySelector("nav ul") ||
+    document.querySelector(".navbar ul");
+
+  if (menuButton && navigation) {
+    menuButton.addEventListener("click", function () {
+      navigation.classList.toggle("active");
+    });
+
+    navigation.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navigation.classList.remove("active");
+      });
+    });
+  }
+
+  // ---------- START ----------
+  renderCards();
+
+});
